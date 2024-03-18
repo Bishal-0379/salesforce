@@ -1,39 +1,31 @@
-const createInvestmentAccount = async (name, email, rollNumber, phone) => {
-  const url = 'https://customer-analytics-34146.my.salesforce-sites.com/services/apexrest/createAccount';
-  const headers = {
-    'Content-Type': 'application/json',
-  };
-  const body = JSON.stringify({
-    name,
-    email,
-    rollNumber,
-    phone,
-  });
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers,
-      body,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
+const accountData = {
+  name: "Bishal Das",
+  email: "bishal0379.be21@chitkara.edu.in",
+  rollNumber: 2110990379,
+  phone: 8011253738
 };
 
-const name = 'Bishal Das';
-const email = 'bishal0379.be21@chitkara.edu.in';
-const rollNumber = 2110990379;
-const phone = 8011253738;
+const jsonData = JSON.stringify(accountData);
 
-createInvestmentAccount(name, email, rollNumber, phone)
-  .then((data) => console.log('Account created:', data))
-  .catch((error) => console.error('Error:', error));
+const fetchOptions = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: jsonData
+};
+
+fetch('https://customer-analytics-34146.my.salesforce-sites.com/services/apexrest/createAccount', fetchOptions)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Request failed: ' + response.statusText);
+    }
+  })
+  .then(data => {
+    console.log('Account created:', data);
+  })
+  .catch(error => {
+    console.error('Error creating account:', error);
+  });
