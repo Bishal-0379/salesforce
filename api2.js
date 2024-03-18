@@ -11,7 +11,7 @@ const fetchOptions = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'bfhl-auth': '2110990379'
+    'bfhl-auth': 2110990379
   },
   body: jsonData
 };
