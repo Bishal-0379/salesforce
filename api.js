@@ -26,7 +26,7 @@ async function buyStocks(accountNumber, githubRepoLink) {
   try {
     const response = await axios.post('https://customer-analytics-34146.my.salesforce-sites.com/services/apexrest/buyStocks', {
       company: 'tesla',
-      currentPrice: 1000, // Replace with the real current stock price
+      currentPrice: 1000,
       accountNumber: BFHL0018651,
       githubRepoLink: "https://github.com/Bishal-0379/salesforce"
     }, {
@@ -46,7 +46,7 @@ async function buyStocks(accountNumber, githubRepoLink) {
 async function main() {
   const account = await createAccount();
   const accountNumber = account.accountNumber;
-  const githubRepoLink = 'https://github.com/your_username/your_repo';
+  const githubRepoLink = 'https://github.com/Bishal-0379/salesforce';
 
   buyStocks(accountNumber, githubRepoLink);
 }
